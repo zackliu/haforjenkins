@@ -36,7 +36,7 @@ Move JENKINS_HOME from osDisk to dataDisk
         sudo mount /dev/sdc1 /var/lib/jenkins
 
 
-Edit /etc/fstab to ensure remount drive automatically after a reboot
+Run scripts below to add lines in `/etc/fstab` to ensure remount drive automatically after a reboot
 
         UUID=$(sudo -i blkid | grep /dev/sdc1* | awk '{print $2}' | sed "s/\"//g") && \
         sudo sh -c "echo '${UUID}   /var/lib/jenkins   ext4   defaults,nofail   1   2'>>/etc/fstab"
